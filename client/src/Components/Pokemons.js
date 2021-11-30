@@ -16,13 +16,16 @@ const Pokemons = () => {
     console.log(response);
   };
 
-  const addPokemon = (pokemon) => {
-    setPokemons([pokemon, ...pokemons]);
-  };
-
   const updatePokemon = (pokemon) => {
     let updatedPokemons = pokemons.map((p) => (p.id === pokemon.id ? pokemon : p));
     setPokemons(updatedPokemons);
+  };
+
+  const deletePokemon = async (id) => {
+    await axios.delete(`/api/pokemons/${id}`);
+    // remove from UI
+    const filterPokemons = pokemons.filter((pokemon) => pokemon.id !== id);
+    setPokemons(filterPokemons);
   };
 
   const renderPokemons=()=>{
@@ -30,16 +33,14 @@ const Pokemons = () => {
       return <p>No Pokemon Found. Catch more and try again.</p>;
     }
     return pokemons.map((pokemon)=>{
-      return <Pokemon {...pokemon} updatePokemon={updatePokemon}/>
-      
-      // deletePokemon={deletePokemon}
+      return <Pokemon key={pokemon.id} {...pokemon} deletePokemon={deletePokemon} updatePokemon={updatePokemon}/>
     });
   };
 
   return (
   <div>
     <h1>Pokemon</h1>
-    <PokemonForm addPokemon = {addPokemon}/>
+    {/* <PokemonForm addPokemon = {addPokemon}/> */}
     {renderPokemons()}
   </div>
   );

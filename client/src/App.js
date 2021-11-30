@@ -1,11 +1,19 @@
+import { Route, Routes } from "react-router-dom";
 import './App.css';
-import Pokemons from './Pokemons';
+import Navbar from "./Components/Navbar";
+import PokemonForm from "./Components/PokemonForm";
+import Pokemons from './Components/Pokemons';
 
 function App() {
   return (
-    <div className="App">
-      <Pokemons/> 
-    </div>
+  <>
+    <Navbar/>
+    <Routes>
+      <Route path="/" element={<Pokemons/>}/>
+      <Route path="/pokemons/new" element={<PokemonForm/>}/>
+      <Route path="/pokemons/:id/edit" element={<PokemonForm/>}/>
+    </Routes>
+  </>
   );
 }
 
