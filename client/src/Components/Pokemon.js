@@ -14,6 +14,7 @@ const Pokemon = (props)=>{
        <p>Move: {props.move}</p>
        <p>Type: {props.poketype}</p>
        <p>id: {props.id}</p>
+       <Link to={`/pokemons/${props.id}`}>View Pokemon</Link>
        <Link to={`/pokemons/${props.id}/edit`}>Edit</Link>
        <button onClick={deleteOnePokemon} >Delete</button>
     </div>

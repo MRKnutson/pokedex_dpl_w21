@@ -4,6 +4,7 @@ import About from "./Components/About";
 import Navbar from "./Components/Navbar";
 import PokemonForm from "./Components/PokemonForm";
 import Pokemons from './Components/Pokemons';
+import PokemonShow from "./Components/PokemonShow";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Pokemons/>}/>
       <Route path="/pokemons/new" element={<PokemonForm/>}/>
+      <Route path="/pokemons/:id" element={<PokemonShow/>}/>
       <Route path="/pokemons/:id/edit" element={<PokemonForm/>}/>
       <Route path="/about" element={<About />} />
     </Routes>
