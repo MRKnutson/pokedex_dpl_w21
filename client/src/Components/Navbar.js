@@ -5,6 +5,7 @@ const Navbar = () => {
     <div>
       <Link to="/">Pokedex</Link>
       <Link to="/pokemons/new">Add Pokemon</Link>
+      <Link to="/about">About</Link>
     </div>
   );
 };
