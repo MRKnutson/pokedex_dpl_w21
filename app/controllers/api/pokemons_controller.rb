@@ -1,31 +1,43 @@
 class Api::PokemonsController < ApplicationController
-
+  before_action :set_pokemon, only: [:show, :destroy, :update]
 def index
   render json: Pokemon.all
 end
 
-def create
+def show
+  render json: @pokemon
 end
 
-def show
-render json: @pokemon
+def create
+  @pokemon = Pokemon.new(pokemon_params)
+  if (@pokemon.save)
+    render json: @pokemon 
+  else
+    render json: { errors: @pokemon.errors }, status: 422
+  end
 end
 
 def update
+  if (@pokemon.update(pokemon_params))
+    render json: @pokemon 
+  else
+    render json: { errors: @pokemon.errors }, status: 422
+  end
 end
 
-
-def destroy
+def destroy 
+  render json: @pokemon.destroy
 end
+
 
 private
 
-pokemon_params
-  params.require(:pokemon).permit( :name, :location, :move, :poketype )
-end
+  def pokemon_params
+    params.require(:pokemon).permit( :name, :location, :move, :poketype )
+  end
 
-def set_pokemon
-  @pokemon = Pokemon.find(params[:id])
-end
+  def set_pokemon
+    @pokemon = Pokemon.find(params[:id])
+  end
 
 end
