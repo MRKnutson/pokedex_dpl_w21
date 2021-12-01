@@ -38,14 +38,24 @@ const Pokemons = () => {
   };
 
   return (
-  <div>
-    <h1>Pokemon</h1>
+  <div style={style.div}>
+    <h1 style={style.header}>Here are all your known pokemon:</h1>
     {/* <PokemonForm addPokemon = {addPokemon}/> */}
     {renderPokemons()}
   </div>
   );
 };
 
+const style = {
+  div: {
+    backgroundColor: 'rgb(10, 74, 201)',
+  },
+  header: {
+    color: 'white',
+    padding: '20px',
+    marginTop: '-10px',
+  }
+}
 
 
 export default Pokemons;

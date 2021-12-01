@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Pokecard from './PokecardStyle';
 
 
 const Pokemon = (props)=>{
@@ -8,7 +9,7 @@ const Pokemon = (props)=>{
     deletePokemon(id);
   };
   return(
-    <div>
+    <Pokecard borderColor="white">
        <p>Name: {props.name}</p>
        <p>Location: {props.location}</p>
        <p>Move: {props.move}</p>
@@ -17,7 +18,7 @@ const Pokemon = (props)=>{
        <Link to={`/pokemons/${props.id}`}>View Pokemon</Link>
        <Link to={`/pokemons/${props.id}/edit`}>Edit</Link>
        <button onClick={deleteOnePokemon} >Delete</button>
-    </div>
+    </Pokecard>
   );
 };
 

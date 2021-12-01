@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import Pokecard from './PokecardStyle';
 
 
 const PokemonShow = ()=>{
@@ -35,7 +36,7 @@ const PokemonShow = ()=>{
   };
 
   return(
-    <div>
+    <Pokecard>
        <p>Name: {name}</p>
        <p>Location: {location}</p>
        <p>Move: {move}</p>
@@ -43,7 +44,7 @@ const PokemonShow = ()=>{
        <p>id: {params.id}</p>
        <Link to={`/pokemons/${params.id}/edit`}>Edit</Link>
        <button onClick={()=>deletePokemon()} >Delete</button>
-    </div>
+    </Pokecard>
   );
 };
 
